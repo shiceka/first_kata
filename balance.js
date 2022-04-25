@@ -1,14 +1,29 @@
-const accountBalance = (withdrawal=0,deposit=0)=>{
-    let balance = 1000;
-//  We must start by depositting before we withdraw
-    if(deposit >= withdrawal || deposit < withdrawal){
-        balance = balance + deposit - withdrawal;
-    }
-//  We cannot have a negative bank balance hence we can not withdraw more than we have
-    else if(balance < 0 || withdrawal > balance || deposit < 0){
-        return "insufficient funds!"+" Please contact your bank for more details";
-    }
-    
-    return balance;
+    function Account(amount){
+    this.balance = amount;
+    this.withdrawal = withdrawal;
+    this.deposit = deposit;
+    this.print = print;
 }
-console.log(Balance(200, 300));
+    function deposit(amount){
+        this.balance = this.balance + amount; 
+    }
+
+    function withdrawal(amount){
+        if(amount <= this.balance){
+            this.balance =this.balance - amount;
+        }
+        else if(amount > this.balance || this.balance < 0){
+            return "insufficient funds";
+        }
+    }
+    function print(){
+    return "Your balance is : R" +this.balance;
+    }
+
+let account = new Account(1000);
+account.deposit(500);
+console.log(account.print());
+account.withdrawal(2000);
+console.log(account.print());
+
+
